@@ -1,0 +1,43 @@
+<launch>
+  <!-- package configs -->
+  <let name="project_name" value="traps_ssl_nav"/>
+  <let name="project_namespace" value="traps::ssl_nav"/>
+  <let name="project_share" value="$(find-pkg-share $(var project_name))"/>
+
+  <!-- global args -->
+  <arg name="namespace" default=""/>
+  <arg name="container_name" default="traps_ssl_nav_container"/>
+  <arg name="thread_num" default="2"/>
+  <arg name="params_file" default="$(var project_share)/config/pure_pursuit.param.yaml"/>
+  <arg name="use_sim_time" default="false"/>
+
+  <!-- nav args -->
+  <arg name="nav_name" default="/ssl_nav"/>
+
+  <!-- namespace -->
+  <push_ros_namespace namespace="$(var namespace)$(var nav_name)"/>
+
+  <!-- global parameters -->
+  <set_parameter name="use_sim_time" value="$(var use_sim_time)"/>
+
+  <!-- container -->
+  <node_container
+      if="$(eval &quot;('$(var thread_num)'>='1') and ('$(var container_name)'!='-')&quot;)"
+      pkg="rclcpp_components"
+      exec="component_container_mt"
+      namespace="$(var namespace)$(var nav_name)"
+      name="$(var container_name)"
+      output="screen">
+    <param name="thread_num" value="$(var thread_num)"/>
+  </node_container>
+
+  <!-- components -->
+  <load_composable_node
+      if="$(eval &quot;'$(var container_name)'!='-'&quot;)"
+      target="$(var namespace)$(var nav_name)/$(var container_name)">
+  </load_composable_node>
+
+  <!-- exec -->
+  <group if="$(eval &quot;'$(var container_name)'=='-'&quot;)">
+  </group>
+</launch>
