@@ -15,7 +15,7 @@
 #ifndef TRAPS__SSL_NAV__ROS2__POSE_WITH_COVARIANCE_HPP_
 #define TRAPS__SSL_NAV__ROS2__POSE_WITH_COVARIANCE_HPP_
 
-#include "Eigen/Dense"
+#include "eigen3/Eigen/Dense"
 #include "geometry_msgs/msg/pose_with_covariance.hpp"
 #include "rclcpp/type_adapter.hpp"
 #include "traps/ssl_nav/ros2/pose.hpp"

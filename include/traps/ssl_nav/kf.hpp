@@ -18,7 +18,7 @@
 #include <chrono>
 #include <limits>
 
-#include "Eigen/Dense"
+#include "eigen3/Eigen/Dense"
 
 namespace traps::ssl_nav
 {

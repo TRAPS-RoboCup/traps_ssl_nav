@@ -21,7 +21,7 @@
 #include <utility>
 #include <vector>
 
-#include "Eigen/Dense"
+#include "eigen3/Eigen/Dense"
 #include "nav_msgs/msg/odometry.hpp"
 #include "rclcpp/node.hpp"
 #include "traps/ssl_nav/kf.hpp"

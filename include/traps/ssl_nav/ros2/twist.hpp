@@ -15,7 +15,7 @@
 #ifndef TRAPS__SSL_NAV__ROS2__TWIST_HPP_
 #define TRAPS__SSL_NAV__ROS2__TWIST_HPP_
 
-#include "Eigen/Dense"
+#include "eigen3/Eigen/Dense"
 #include "geometry_msgs/msg/twist.hpp"
 #include "rclcpp/type_adapter.hpp"
 
